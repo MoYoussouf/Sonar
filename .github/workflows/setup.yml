@@ -16,27 +16,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js (if needed, or specify your environment)
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
 
       - name: Install dependencies
         run: npm install
+        working-directory: C:\Users\moham\Sonar\.github
 
       - name: Run tests
         run: npm test
+        working-directory: C:\Users\moham\Sonar\.github
 
       - name: Build project
         run: npm run build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to Server Pod
-        run: |
-          echo "Deploying to Server Pod..."
-          # Add deployment commands here, such as kubectl for Kubernetes
-          # For example, if you’re deploying to Kubernetes:
-          # kubectl apply -f deployment.yaml
+        working-directory: C:\Users\moham\Sonar\.github
